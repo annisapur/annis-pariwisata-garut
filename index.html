@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WebGIS Persebaran Objek Wisata & Penginapan Garut</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css"/>
+    
+<body>
+    <header id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="asset/logo.png" alt="Logo Dinas Pariwisata Kabupaten Garut"/>
+                <h1>Dinas Pariwisata Kabupaten Garut</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero-section">Beranda</a></li>
+                    <li><a href="#data-section">Wisata</a></li>
+                    <li><a href="#penginapan-section">Penginapan</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero-section" class="hero-section">
+        <div class="hero-content">
+            <h1>Selamat Datang di Website Destinasi Wisata Kabupaten Garut</h1>
+            <p>Temukan Destinasi Wisata Menarik dan Penginapan Nyaman di Kabupaten Garut!</p>
+            <a href="map.html" class="hero-button">Lihat Peta</a>
+        </div>
+    </section>
+
+    <section id="data-section">
+        <h2>Destinasi Wisata Terbaik di Kabupaten Garut</h2>
+        <div class="container">
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://cnc-magazine.oramiland.com/parenting/images/darajat-pass.width-800.format-webp.webp" alt="Darajat Pass, Garut" />
+                    <div class="description">
+                        <h3>Darajat Pass</h3>
+                        <p>Darajat Pass adalah kawasan wisata populer dengan pemandian air panas alami. Berlokasi di dataran tinggi dengan panorama pegunungan asri, tempat ini menawarkan kolam air panas, waterboom, dan penginapan. Suasana sejuknya menjadikannya pilihan favorit untuk liburan keluarga dan relaksasi.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.4</span>
+                            <span class="review-count">(22.549 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/720x0/webp/photo/2025/04/06/4270118135.jpg" alt="Pantai Puncak Guha, Garut" />
+                    <div class="description">
+                        <h3>Pantai Puncak Guha</h3>
+                        <p>Pantai Puncak Guha adalah permata tersembunyi di pesisir selatan. Unik dengan gua kelelawar di puncak tebing, pantai ini menyuguhkan pemandangan laut lepas yang spektakuler. Daya tarik utamanya adalah formasi tebing karang dramatis dan pengalaman melihat kelelawar keluar gua saat senja.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.5</span>
+                            <span class="review-count">(2.954 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://cdn-1.timesmedia.co.id/images/2022/08/14/Taman-Satwa.jpg" alt="Taman Satwa Cikembulan, Garut" />
+                    <div class="description">
+                        <h3>Taman Satwa Cikembulan</h3>
+                        <p>Taman Satwa Cikembulan adalah kebun binatang yang edukatif di Garut, menawarkan beragam koleksi satwa. Dengan lingkungan yang tertata apik, tempat ini menjadi destinasi ideal untuk keluarga, memungkinkan pengunjung belajar tentang keanekaragaman hayati sambil menikmati suasana rekreasi yang menyenangkan.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.3</span>
+                            <span class="review-count">(2.643 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://traverse.id/wp-content/uploads/2018/02/Candi-Cangkuang-@himsaifanah.jpg" alt="Situ Cangkuang, Garut" />
+                    <div class="description">
+                        <h3>Situ Cangkuang</h3>
+                        <p>Situ Cangkuang adalah danau indah dengan nilai sejarah. Di tengah danau terdapat Candi Cangkuang, situs peninggalan Hindu, serta makam leluhur. Pengunjung bisa menikmati ketenangan danau dengan rakit bambu, serta belajar tentang warisan budaya yang kaya di lokasi ini.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.5</span>
+                            <span class="review-count">(3.771 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/178/2024/12/13/mawargarut2-1024x683-3524061611.jpg" alt="Kebun Mawar Situpaha, Garut" />
+                    <div class="description">
+                        <h3>Kebun Mawar Situpaha</h3>
+                        <p>Kebun Mawar Situpaha merupakan destinasi yang memukau. Dengan hamparan bunga mawar yang luas dan indah, tempat ini menawarkan suasana asri pegunungan. Udara sejuk dan pemandangan menawan menjadikannya lokasi ideal untuk bersantai, berfoto, dan menikmati keindahan alam.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.3</span>
+                            <span class="review-count">(3.985 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/07/22/Makam-Godog-Garut-735915560.jpg" alt="Makam Keramat Godog, Garut" />
+                    <div class="description">
+                        <h3>Makam Keramat Godog</h3>
+                        <p>Makam Keramat Godog adalah situs ziarah yang sangat dihormati, diyakini sebagai makam penyebar agama Islam di Jawa Barat. Berada di lingkungan yang tenang dan asri, tempat ini menjadi tujuan utama bagi para peziarah yang mencari berkah dan ketenangan spiritual.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.3</span>
+                            <span class="review-count">(371 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Pendakian-Gunung-Papandayan-Pesona-Indonesia-fototrip-5.jpg" alt="Gunung Papandayan, Garut" />
+                    <div class="description">
+                        <h3>Gunung Papandayan</h3>
+                        <p>Gunung Papandayan adalah gunung berapi aktif yang populer untuk pendakian. Dikenal dengan kawah belerang yang memukau, hutan mati eksotis, dan padang edelweis yang luas, Papandayan menawarkan pemandangan alam spektakuler. Aksesnya yang relatif mudah menjadikannya favorit bagi pendaki pemula maupun berpengalaman.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.7</span>
+                            <span class="review-count">(2.294 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://nnc-media.netralnews.com/IMG-Netral-News-Admin-20-PW16M9TU57.jpg" alt="Makam Sunan Cipancar, Garut" />
+                    <div class="description">
+                        <h3>Makam Sunan Cipancar</h3>
+                        <p>Makam Sunan Cipancar adalah situs ziarah bersejarah yang dihormati. Merupakan tempat peristirahatan terakhir Sunan Cipancar, tokoh ulama penyebar agama Islam, lokasi ini ramai dikunjungi peziarah dari berbagai daerah. Suasana tenang dan nilai historisnya menjadikan makam ini destinasi spiritual penting.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.8</span>
+                            <span class="review-count">(17 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://cnc-magazine.oramiland.com/parenting/images/wisata-sabda-alam-garut.width-800.format-webp.webp" alt="Taman Air Sabda Alam, Garut" />
+                    <div class="description">
+                        <h3>Taman Air Sabda Alam</h3>
+                        <p>Taman Air Sabda Alam adalah destinasi rekreasi keluarga di Garut, terkenal dengan kolam air panas dan berbagai wahana air seru. Terletak di lingkungan yang asri, tempat ini menawarkan pengalaman bermain air yang menyenangkan sekaligus relaksasi dengan fasilitas yang lengkap, menjadikannya pilihan ideal untuk liburan.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.2</span>
+                            <span class="review-count">(5.923 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                    <img src="https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2022/09/10/1758426679.jpeg" alt="Kawah Talaga Bodas, Garut" />
+                    <div class="description">
+                        <h3>Kawah Talaga Bodas</h3>
+                        <p>Kawah Talaga Bodas adalah danau kawah vulkanik yang memukau, dikenal dengan airnya yang berwarna putih kehijauan karena kandungan belerang. Dikelilingi pemandangan alam pegunungan yang asri, tempat ini cocok untuk piknik, berfoto, atau berendam di kolam air panas alami yang menenangkan.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.4</span>
+                            <span class="review-count">(846 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="penginapan-section">
+        <h2>Penginapan Terbaik di Kabupaten Garut</h2>
+        <div class="container horizontal-scroll">
+            <div class="column">
+                <div class="data-item">
+                  <a href="https://resort-kampungsumberalam.com">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/35531517.jpg?k=028c2afb2e86cab32b526af86e9a910f41bf45d936541fd7eb8d03efec241428&o=&hp=1" alt="Hotel Bintang 4 Garut" />
+                  </a>
+                    <div class="description">
+                        <h3>Kampung Sumber Alam Garut</h3>
+                        <p>Jalan Raya Cipanas 122 Pananjung Tarogong Kaler, Pananjung, Cipanas, Kabupaten Garut, Jawa Barat 44151.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.5</span>
+                            <span class="review-count">(9.433 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                  <a href="https://www.tiket.com/hotel/indonesia/penginapan-karanglaut-santolo-412001639107946305">
+                    <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/t_htl-dskt/tix-hotel/images-web/2021/09/03/f93a3953-6df0-4774-983d-cdaeebff5a49-1630642549757-c4a706f02bfa34c246374dc17dc6c5ef.jpg" alt="Hotel Bintang 1 Garut" />
+                  </a>
+                    <div class="description">
+                        <h3>Penginapan Karanglaut Santolo</h3>
+                        <p>Jl. Cilauteureun Pamalayan, Cikelet, Pamalayan, Kec. Cikelet, Kabupaten Garut, Jawa Barat 44176</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.1</span>
+                            <span class="review-count">(504 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                  <a href=" https://www.bukitalamandaresort.com">
+                    <img src="https://pix10.agoda.net/hotelImages/248362/-1/61893ada2128ee4758bf856486fb0779.jpg?ce=0&s=414x232" alt="Hotel bintang 3 di Garut" />
+                  </a>
+                    <div class="description">
+                        <h3>Bukit Alamanda Resort & Resto</h3>
+                        <p>Jl. Raya Samarang KM 5 Mekargalih Tarogong, Tarogong Kidul, Garut Kota, Mekarluyu, Mekargalih, Kec. Tarogong Kidul, Kabupaten Garut, Jawa Barat 44151.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.2</span>
+                            <span class="review-count">(2.396 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                      <a href="https://www.traveloka.com/id-id/hotel/indonesia/cahaya-villa-garut-3000020013134">
+                        <img src="https://pix10.agoda.net/hotelImages/5302807/0/7f6d11fe0c46639390878c7e45f25aea.jpeg?ce=0&s=414x232" alt="Hotel bintang 3 di Garut" />
+                      </a>
+                      <div class="description">
+                        <h3>Cahaya Villa Garut</h3>
+                        <p>Jl. Cipanas Baru, Pananjung, Kec. Tarogong Kaler, Kabupaten Garut, Jawa Barat 44151.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.7</span>
+                            <span class="review-count">(4.894 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="data-item">
+                      <a href="https://www.tiket.com/hotel/indonesia/hotel-harmoni-garut-202001549517230932">
+                        <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/t_htl-dskt/tix-hotel/images-web/2021/01/28/2830696a-1129-4d52-a653-7245f9dde681-1611793915102-2339e492f0f2dee151e37567cebeee35.jpg" alt="Hotel bintang 3 di Garut" />
+                      </a>
+                      <div class="description">
+                        <h3>Hotel Harmoni Garut</h3>
+                        <p>Jl. Cipanas Baru No.78, Pananjung, Kec. Tarogong Kaler, Kabupaten Garut, Jawa Barat 44151.</p>
+                        <div class="rating">
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star filled">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="rating-value">4.6</span>
+                            <span class="review-count">(3.802 ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+          <img src="asset/foto.jpg" alt="Foto Author" class="about-photo" />
+          <div class="about-info">
+            <h3>Annisa Purnama Sari</h3>
+            <p class="about-justify">
+                Saya merupakan mahasiswi Sains Informasi Geografi UPI yang juga memiliki minat dalam bidang linguistik selain hal geografi.
+                Bidang yang saya tekuni dalam geospasial ada empat keilmuan, yaitu pengindraan jauh, SIG, Survei Pemetaan, dan Kartografi.
+                Sementara itu, saya menekuni bidang penerjemahan dalam hal linguistik.
+            </p>
+            <div class="about-social">
+              <a href="https://www.instagram.com/annisapur__?igsh=a203MWh5aXBxZXg4" target="_blank" class="social-link instagram">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.2.4 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.4-.2.6-.5 1-.9 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.3-2.4.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.4.2-.6.5-1 .9-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.3 2.4-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.2 4.8.4 4 .7c-.9.3-1.6.7-2.3 1.4C1 3.1.6 3.8.3 4.7.1 5.5 0 6.4 0 7.7.1 8.3.1 8.7.1 12s0 3.7.1 4.3c.1 1.3.3 2.2.6 3 .3.9.7 1.6 1.4 2.3.7.7 1.4 1.1 2.3 1.4.8.3 1.7.5 3 .6.6.1 1 .1 4.3.1s3.7 0 4.3-.1c1.3-.1 2.2-.3 3-.6.9-.3 1.6-.7 2.3-1.4.7-.7 1.1-1.4 1.4-2.3.3-.8.5-1.7.6-3 .1-.6.1-1 .1-4.3s0-3.7-.1-4.3c-.1-1.3-.3-2.2-.6-3-.3-.9-.7-1.6-1.4-2.3-.7-.7-1.4-1.1-2.3-1.4-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.8-10.4a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+              </a>
+              <a href="https://github.com/annisapur" target="_blank" class="social-link github" aria-label="GitHub">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.236 1.84 1.236 1.07 1.835 2.807 1.305 3.492.997.108-.775.418-1.305.76-1.605-2.665-.3-5.466-1.335-5.466-5.93 0-1.31.47-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.045.138 3.003.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.21 0 1.595-.015 2.88-.015 3.27 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/annisa-purnama-sari-9b5bb6147?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link linkedin">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76c.97 0 1.75.79 1.75 1.76s-.78 1.76-1.75 1.76zm15.5 10.29h-3v-4.5c0-1.08-.02-2.47-1.51-2.47-1.51 0-1.74 1.18-1.74 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.56 1.97 3.56 4.53v4.78z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <footer id="kontak">
+        <p>&copy; 2025 WebGIS Pariwisata Garut.</p>
+        <p>Email: annisapurnamasari88@upi.edu | Telepon: 0896-5583-5547</p>
+        <p>Alamat: Jl. Raya Kadungora No. 1, Kadungora, Garut, Jawa Barat</p>
+    </footer>
+</body>
+</html>
